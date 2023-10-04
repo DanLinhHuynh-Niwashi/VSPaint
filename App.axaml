@@ -27,6 +27,7 @@
 											  Content="{TemplateBinding Header}"
 											  ContentTemplate="{TemplateBinding HeaderTemplate}">
 							</ContentPresenter>
+							<!--Child menu-->
 							<Popup Name="PART_Popup"
 									WindowManagerAddShadowHint="False"
 									Placement="BottomEdgeAlignedLeft"
@@ -76,9 +77,10 @@
 											  Content="{TemplateBinding Header}"
 											  ContentTemplate="{TemplateBinding HeaderTemplate}">
 							</ContentPresenter>
+							<!--Child menu-->
 							<Popup Name="PART_Popup"
 									WindowManagerAddShadowHint="False"
-									Placement="BottomEdgeAlignedLeft"
+									Placement="RightEdgeAlignedTop"
 									HorizontalOffset="0"
 									IsLightDismissEnabled="False"
 									IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}">
