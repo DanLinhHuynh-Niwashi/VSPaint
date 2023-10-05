@@ -5,6 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 		MinWidth="500" MinHeight="400"
         x:Class="VSPaint.MainWindow"
+		xmlns:local="clr-namespace:VSPaint"
         Title="VSPaint">
 
 	<Grid RowDefinitions="Auto,*,Auto">
@@ -12,6 +13,7 @@
 			<!--title bar-->
 			<Border Grid.Row="0" DockPanel.Dock="Top">
 				<Menu Background="#301934">
+					<!--File menu item-->
 					<MenuItem Width="50"
 						Theme="{StaticResource TitleBarButton}"
 							  Header="File">
@@ -22,6 +24,7 @@
 						<Separator Background="White" Height="0.2"/>
 						<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Exit" Width="200"/>
 					</MenuItem>
+					<!--Edit menu item-->
 					<MenuItem Width="50"
 							Theme="{StaticResource TitleBarButton}" Header="Edit">
 						<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Copy" Width="200"/>
@@ -30,6 +33,7 @@
 						<Separator Background="White" Height="0.2"/>
 						<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Transform..." Width="200">
 							<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Free Transform..." Width="200"/>
+							<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Deform..." Width="200"/>
 							<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Scale/ Rotate..." Width="200"/>
 							<Separator Background="White" Height="0.2"/>
 							<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Flip Horizontal" Width="200"/>
@@ -44,6 +48,7 @@
 							<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Flip Vertical" Width="200"/>
 						</MenuItem>
 					</MenuItem>
+					<!--View menu item-->
 					<MenuItem Width="50"
 							Theme="{StaticResource TitleBarButton}" Header="View">
 						<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Zoom" Width="200"/>
@@ -51,6 +56,8 @@
 						<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Ruler" Width="200"/>
 						<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Grid Lines" Width="200"/>
 					</MenuItem>
+					
+					<!--Help menu item-->
 					<MenuItem Width="50"
 							Theme="{StaticResource TitleBarButton}" Header="Help">
 						<MenuItem Theme="{StaticResource TitleBarButtonChild}" Header="Go to Main Page..." Width="200"/>
@@ -67,26 +74,61 @@
 					<ColumnDefinition Width="0.2"></ColumnDefinition>
 					<ColumnDefinition Width="1.8*" MinWidth="100"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
+				<!--Left setting panel-->
 				<Grid ColumnDefinitions="Auto,*" Grid.Column="0" MinWidth="100" Background="Red">
-					<StackPanel Grid.Column="0" Background="Azure" Width="30">
-						<Button Height="30" Background="Transparent">P</Button>
-						<Button Height="30" Background="Transparent">E</Button>
-						<Button Height="30" Background="Transparent">S</Button>
-						<Button Height="30" Background="Transparent">F</Button>
+					<!--Draw Buttons-->
+					<StackPanel Grid.Column="0" Background="Azure" Width="30" HorizontalAlignment="Center" Orientation="Vertical">
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">P</Button>
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">E</Button>
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">S</Button>
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">F</Button>
 					</StackPanel>
+					<!--Draw setting-->
 					<Grid Grid.Column="1" Background="Black">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="4*" MinHeight="200"></RowDefinition>
 							<RowDefinition Height="0.2"></RowDefinition>
 							<RowDefinition Height="6*" MinHeight="200"></RowDefinition>
 						</Grid.RowDefinitions>
+						<!--Color Setting-->
 						<Rectangle Grid.Row="0" Fill="Red"></Rectangle>
 						<GridSplitter Grid.Row="1" Background="Transparent" ResizeDirection="Rows"/>
+						<!--Brush setting-->
 						<Rectangle Grid.Row="2" Fill="Green"></Rectangle>
 					</Grid>
 				</Grid>
 				<GridSplitter Grid.Column="1" Background="Transparent" ResizeDirection="Columns"/>
-				<Rectangle Grid.Column="2" Fill="Orange"></Rectangle>
+				<!--Drawing Canvas and Selection Tools-->
+				<Grid Grid.Column="2" RowDefinitions="Auto,*" Background="Orange">
+					<!--Selection Tools-->
+					<WrapPanel Grid.Row="0" Background="Aquamarine" Height="30" Orientation="Horizontal">
+						
+						<!--Select-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">1</Button> 
+						<!--Deselect-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">2</Button> 
+						<!--Select All-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">3</Button>
+						<!--Deselect All-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">4</Button> 
+						<!--Reverse Selection-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">5</Button>
+						
+						<Separator Width="0.2" Height="20"></Separator>
+						
+						<!--Free transform-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">6</Button>
+						<!--Deform-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">7</Button>
+						<!--Scale/ Rotate-->
+						<Button Height="30" Width="30" Background="Transparent" HorizontalContentAlignment="Center">8</Button>
+						
+					</WrapPanel>
+					<!--Drawing Space-->
+					<Panel Background="Gray" Grid.Row="1">
+						
+					</Panel>
+				</Grid>
 				<GridSplitter Grid.Column="3" Background="Transparent" ResizeDirection="Columns"/>
 				<Rectangle Grid.Column="4" MinWidth="200" Fill="Red"></Rectangle>
 			</Grid>
